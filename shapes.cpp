@@ -1,5 +1,6 @@
 // vedi slides per UML 
 #include <iostream>
+#include <typeinfo>
 #include <cstdlib>
 #include <ctime>
 using namespace std; 
@@ -15,16 +16,24 @@ public:
     Shape(color _c){
         this->Color = _c; 
     };
-    Shape();
-    color getColor(){
-        return Color; 
+    
+    string getColor(){
+        switch(Color){
+            case 0:
+                return "red"; 
+                break; 
+            case 1:
+                return "green"; 
+                break; 
+            case 2: 
+                return "blue"; 
+                break; 
+        }
     }
     void setColor(color newC){
         Color = newC; 
     }
-    void print(){
-        cout << "This figure is "<< getColor() << "and has an area of "<< getArea()<<endl; 
-    }
+    void print(const char *); 
     virtual double getArea() = 0; 
 };
 
@@ -33,11 +42,11 @@ private:
     double height = 1; 
     double width = 1; 
 public:
-    Rectangle(double _h, double _w){
+    Rectangle(double _h, double _w) : Shape(red){
         this->height = _h; 
         this->width = _w; 
     }
-    Rectangle(double _h, double _w, color _c){
+    Rectangle(double _h, double _w, color _c) : Shape(_c){
         this->height = _h; 
         this->width = _w; 
         this->Color = _c; 
@@ -73,12 +82,12 @@ private:
     double xc = 0; 
     double yc = 0; 
 public:
-    Circle(double _r, double _xc, double _yc){
+    Circle(double _r, double _xc, double _yc): Shape(blue){
         this->radius = _r; 
         this->xc = _xc; 
         this->yc = _yc; 
     }
-    Circle(double _r, double _xc, double _yc, color _col){
+    Circle(double _r, double _xc, double _yc, color _col) : Shape(_col){
         this->radius = _r; 
         this->xc = _xc; 
         this->yc = _yc; 
@@ -122,11 +131,11 @@ private:
     double base = 1; 
     double height = 1; 
 public:
-    Triangle(double _b, double _h){
+    Triangle(double _b, double _h) : Shape(green){
         this->base = _b; 
         this-> height = _h; 
     }
-    Triangle(double _b, double _h, color _col){
+    Triangle(double _b, double _h, color _col) : Shape(_col){
         this->base = _b; 
         this->height = _h; 
         this->Color = _col; 
@@ -148,30 +157,46 @@ public:
     }
 };
 
+void Shape::print(const char * myp){
+        string myshape; 
+        
+        if(myp == typeid(Rectangle).name()){
+            myshape = "Rectangle";
+        }else if(myp == typeid(Circle).name()){
+            myshape = "Circle"; 
+        }else {
+            myshape = "Triangle";
+        }
+        cout << "This " << myshape <<" is "<< getColor() << " and has an area of "<< getArea()<<endl; 
+         
+    }
+
 int main(){
-    Shape * array;
+    Shape * array[N];
+    srand(time(0));
     for(short i = 0; i < N; i++){
         short rando = rand()%3; 
         switch(rando){
             case 0:
-                //array[i] = RECTANGLE CONSTRUCTOR; 
+                array[i] = new Rectangle((rand()%100+1)*1.0,(rand()%100+1)*1.0);
                 break; 
             case 1:
-                //array[i] = CIRCLE CONSTRUCTOR;
+                array[i] = new Circle((rand()%100+1)*1.0,(rand()%100+1)*1.0,(rand()%100+1)*1.0);
                 break; 
             case 2: 
-                //array[i] = TRIANGLE CONSTRUCTOR;
+                array[i] = new Triangle((rand()%100+1)*1.0,(rand()%100+1)*1.0);
                 break; 
             
         }
     }
     double middle = 0.0;
     for(short i = 0; i < N; i++){
-        array[i].print(); 
-        middle += array[i].getArea(); 
+        
+        array[i]->print(typeid(*array[i]).name()); 
+        middle += array[i]->getArea(); 
     }
 
-    cout << "L'area media delle figure inserite è "<< (middle / N) <<endl; 
+    cout << "L'area media delle figure inserite e' "<< (middle / N) <<endl; 
 
     
 }
