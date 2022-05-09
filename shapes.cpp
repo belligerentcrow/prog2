@@ -196,7 +196,7 @@ int main(){
         middle += array[i]->getArea(); 
     }
 
-    cout << "L'area media delle figure inserite e' "<< (middle / N) <<endl; 
+    cout << endl <<"L'area media delle figure inserite e' "<< (middle / N) <<endl; 
 
     
 }
