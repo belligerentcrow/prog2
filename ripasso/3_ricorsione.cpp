@@ -35,16 +35,22 @@ bool isItPrime(int num){  //checks if prime.
     return true; 
 }
 
-bool divByNumber(int num, bool inChoice){ //the choice thing is in case i wanna use this anywhere else. which is kinda dumb since the % operator exists 
+int getValidNumber(int num){
     bool validNum = 0; 
-        int div = 1;
+    int dive = 1;
         while(validNum==0){
             cout << "Insert a number lesser than "<< num <<": "; 
-            cin >> div; 
-                if(div >=0 && div < num){
+            cin >> dive; 
+                if(dive >0 && dive <= num){
                     validNum = 1; 
                 }
-        }   
+        } 
+    return dive; 
+}
+
+bool divByNumber(int num, bool inChoice){ //the choice thing is in case i wanna use this anywhere else. which is kinda dumb since the % operator exists 
+
+    int div = getValidNumber(num);  
 
         if(num%div==0){
                     if(inChoice){cout << num << " is dividable by "<< div <<"."<<endl; }
@@ -53,6 +59,32 @@ bool divByNumber(int num, bool inChoice){ //the choice thing is in case i wanna 
                     if(inChoice){cout << num << " is not dividable by "<< div <<"."<<endl;}
                     return false; 
                 }
+}
+
+int fibonacci(int num){
+   if(num < 0){ 
+    return 0; 
+   }
+
+   if(num == 0||num ==1){
+    return num; 
+   } 
+
+   if (num >=2){
+    return fibonacci(num-1) + fibonacci(num-2); 
+   }
+} 
+
+int mcd(int num1, int numb2){
+    if(numb2 == 0){
+        return num1; 
+    }
+    if(num1 == numb2){
+        return num1; 
+    }else{
+        return mcd(numb2, num1%numb2); 
+    }
+
 }
 
 int main(){
@@ -71,7 +103,11 @@ int main(){
         cout << "2) Evaluate "<<num<<"'s Collatz sequence."<<endl; 
         cout << "3) Evaluate if "<<num<< " is a prime number."<<endl;
         cout << "4) Check if "<< num <<" can be divided by a number of your choosing."<<endl; 
+        cout << "5) Print the "<< num << "st/nd/rd/th step/s of the Fibonacci sequence."<<endl; 
+        cout << "6) Evaluate the GCD between "<< num << " and a number of your choosing."<<endl; 
+
         cin >> choice;
+        int num2 = 0; 
 
         switch(choice){
             case 1:
@@ -84,8 +120,7 @@ int main(){
                 validChoice =1;  
                 break; 
             case 3: 
-                bool prime = isItPrime(num); 
-                    if(prime){
+                    if(isItPrime(num)){
                         cout << num << " is a prime number."<<endl; 
                     }else{
                         cout << num << " is not a prime number."<<endl; 
@@ -96,6 +131,18 @@ int main(){
                 
                 divByNumber(num, 1); 
                 
+                validChoice = 1; 
+                break; 
+            case 5: 
+                cout << "Prova numero 3"<<endl;
+                
+                cout << fibonacci(num)<< endl;
+                
+                validChoice = 1; 
+                break;  
+            case 6: 
+                num2 = getValidNumber(num); 
+                cout << "The GCD between "<< num << " and " << num2 << " is " << mcd(num, num2)<<endl; 
                 validChoice = 1; 
                 break; 
             default: 
