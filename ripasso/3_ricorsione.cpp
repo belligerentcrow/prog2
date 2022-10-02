@@ -87,12 +87,29 @@ int mcd(int num1, int numb2){
 
 }
 
+int sumOfFirsts(int num){
+    if(num <= 1){
+        return 1; 
+    }
+    if(num > 1){
+        return num + sumOfFirsts(num-1);
+    }
+}
+
+
 int main(){
     int num = -1; 
     
     while(num < 0){
         cout << "Insert a number greater than 0."<<endl;
         cin >> num;
+        if(num == 42){
+            cout << "That's the answer!!!"<<endl; 
+        }else if(num == 69){
+            cout << "nice"<<endl; 
+        }else if(num == 420){
+            cout << "blaze it"<<endl; 
+        }
     } 
 
     short int choice = -1;
@@ -105,6 +122,7 @@ int main(){
         cout << "4) Check if "<< num <<" can be divided by a number of your choosing."<<endl; 
         cout << "5) Print the "<< num << "st/nd/rd/th step/s of the Fibonacci sequence."<<endl; 
         cout << "6) Evaluate the GCD between "<< num << " and a number of your choosing."<<endl; 
+        cout << "7) Evaluate the sum of the first "<< num <<" numbers."<<endl; 
 
         cin >> choice;
         int num2 = 0; 
@@ -144,6 +162,16 @@ int main(){
                 num2 = getValidNumber(num); 
                 cout << "The GCD between "<< num << " and " << num2 << " is " << mcd(num, num2)<<endl; 
                 validChoice = 1; 
+                break; 
+            case 7:
+                cout << sumOfFirsts(num); 
+                validChoice = 1; 
+                break;
+            case 69:
+                cout <<endl<< "Nice, but try again"<<endl; 
+                break; 
+            case 420:
+                cout <<endl << "Blaze it, but try again"<<endl; 
                 break; 
             default: 
                 cout <<endl << "Please insert a valid number."<<endl<<endl;
