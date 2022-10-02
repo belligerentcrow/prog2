@@ -1,5 +1,5 @@
 
-//this lets you insert a number and choose whether you want to calculate its factorial or its Collatz sequence (Cfr: Collatz Conjecture). 
+//this lets you insert a number and choose some things you can do with it.
 
 #include <iostream>
 #include <cmath>
