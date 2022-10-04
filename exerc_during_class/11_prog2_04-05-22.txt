@@ -1,0 +1,43 @@
+# Ereditarietà
+
+gerarchia -> possibile descriverla con grafo di gerarchia (uml?)
+
+ereditarietà singola vs ereditarietà multipla <----- ripassare (studiare) implementazioni di classi multiple
+
+## Polimorfismo 
+
+collegamento dinamico -> associazione run-time(fase di esecuzione) dell'oggetto al metodo corrispondente
+
+        class ClasseDerivata : specificatore ClasseBase {
+            membri; 
+        }; 
+
+livelli di accesso -> public private protected (+ "final" dopo nome classe -> non può essere derivata)
+
+costruttore della derivata: anche se non specificato esplicitamente, chiama automaticamente il costruttore della base quando eseguito
+--> vedi slides, "Costruttori e Distruttori" 
+
+# Override vs Overload
+Overloading vs Subtyping vs Programmazione generica
+Polimorfismo nella OOP si fa con il Subtyping di solito 
+
+# Principio di sostituzione di Liskov
+(Sostituire mezzi di trasporto con automobile -> non cambia, perché una automobile è un mezzo di trasporto)
+
+# Binding
+Statico vs dinamico
+
+# Funzioni virtuali
+ogni classe derivata da una base che ha funzioni virtuali DEVE definire le funzioni virtuali che contiene
+
+# Metodo virtuale puro 
+-> non si possono istanziare oggetti di quella classe 
+Si definiscono così le interfacce
+
+# Problema del diamante
+
+# Esercizio classe shape (metodo virtuale puro a scelta (area))
+
+# Programmazione generica
+
+---> templates
