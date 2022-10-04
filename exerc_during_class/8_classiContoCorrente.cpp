@@ -26,7 +26,7 @@ cout << "saldo: "<<s<<endl;
 A.getSaldo() = -5000; 
 A.printSaldo(); 
 cout << endl; 
-B.getSaldoBuona() = -50000
+//B.setSaldoBuona() = -50000;
 
 return 0; 
 
