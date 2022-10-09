@@ -49,6 +49,19 @@ class SList{
                 iter->succ = newNode; 
             }
         }
+
+        Nodo * research (T value){
+            Node * p; 
+            p=this->head; 
+            while(p->succ!=nullptr){
+                if(p->data == value){
+                    return p; 
+                }
+                p=p->succ; 
+            }
+            return nullptr; 
+        }
+        
 };
 
 int main(){
