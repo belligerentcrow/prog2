@@ -74,9 +74,9 @@ class SList{
 
         //destructor
         ~SList(){
-            Node * iter = this->nuts; 
+            Node<T> * iter = this->nuts; 
             while(iter != nullptr){
-                Node * tmp = iter->next; 
+                Node<T> * tmp = iter->next; 
                 delete iter; 
                 iter = tmp; 
             }
@@ -88,7 +88,7 @@ class SList{
         }
 
         void insert(T val){
-            Node * newNode = new Node; 
+            Node<T> * newNode = new Node<T>; 
             newNode->data = val; 
             newNode->next = this->nuts; 
             this->nuts = newNode;
@@ -167,7 +167,7 @@ class DLinkedList{
             nuts->previous = nullptr; 
             nuts->next = nulllptr;
         }
-        void DlistInsert(DNode nod){
+        void DlistInsert(DNode<T> nod){
             nod.next = this->nuts; 
             if(this->head != nullptr){
                 this->head->previous = nod; 
@@ -203,7 +203,7 @@ class DLinkedList{
             DNode * ant = toRemove->previous; 
         }
 
-        DNode * research(T value){
+        DNode<T> * research(T value){
             DNode * p; 
             p = this->head; 
             if(p->data ==value){
@@ -219,10 +219,25 @@ class DLinkedList{
             }
             return nullptr; 
         }
+
+        friend
+        ostream& operator<<(ostream& out, DLinkedList<T> & ls);
 };
 
 template <typename T>
 ostream& operator<<(ostream& out, SList<T>& ls){
+    Node* iter = ls.getNuts();
+// for(Nodo* iter=ls.testa;iter!=nullptr;iter=iter->succ)
+    while(iter!=nullptr){
+        out << iter->data << " <--> ";
+        iter = iter->next;
+    }
+    cout << "NULL" << endl;
+    return out;
+}
+
+template <typename T>
+ostream& operator<<(ostream& out, DLinkedList<T> & ls){
     Node* iter = ls.getNuts();
 // for(Nodo* iter=ls.testa;iter!=nullptr;iter=iter->succ)
     while(iter!=nullptr){
@@ -252,7 +267,7 @@ int main(){
     
     SList<int> myList; 
 
-    myList.insert(39); 
+    /*myList.insert(39); 
     myList.insert(42);
     myList.insert(8);
     myList.insert(248);
@@ -267,6 +282,13 @@ int main(){
 
     cout << myList; 
     cout << myList; 
-    cout << myList; 
+    cout << myList;*/
+
+    DLinkedList<int> listy; 
+    listy.DlistInsertHead(192);
+    listy.DlistInsertHead(19);
+    listy.DlistInsertHead(1);
+
+    cout << listy; 
 
 }
