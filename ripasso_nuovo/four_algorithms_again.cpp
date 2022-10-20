@@ -65,22 +65,22 @@ void BubbleSortFlag(T arr[], int n){
 
 template <typename T>
 void Merge(T arr[], int low, int half, int high){
-    int n1 = half - low +1; 
+    int n1 = half - low+1; 
     int n2 = high - half;
-    T Left[n1+2]; 
-    T Right[n2+2]; 
-    for(int i = 0; i <= n1; i++){
-        Left[i] = arr[low+i-1]; 
+    T Left[n1+1]; 
+    T Right[n2+1]; 
+    for(int i = 0; i < n1; i++){
+        Left[i] = arr[low+i]; 
     }
-    for(int j = 0; j <= n2; j++){
-        Right[j] = arr[half+j]; 
+    for(int j = 0; j < n2; j++){
+        Right[j] = arr[half+j+1]; 
     }
-    Left[n1+1] = INT_MAX;
-    Right[n2+1] = INT_MAX; 
+    Left[n1] = INT_MAX;
+    Right[n2] = INT_MAX; 
 
     int i = 0; 
     int j = 0; 
-    for(int k = low; k < high; k++){
+    for(int k = low; k <= high; k++){
         if(Left[i]<=Right[j]){
             arr[k] = Left[i]; 
             i++; 
@@ -124,8 +124,8 @@ int main(){
     srand(time(NULL)); 
     int myArray[N]; 
 
-    scrambleArray(myArray, N); 
-    printArray(myArray, N); 
+    //scrambleArray(myArray, N); 
+    //printArray(myArray, N); 
 
     //InsertionSort(myArray, N);
     //printArray(myArray, N); 
@@ -137,12 +137,13 @@ int main(){
 
     //scrambleArray(myArray, N);
 
-    BubbleSortFlag(myArray, N); 
-    printArray(myArray, N); 
+    //BubbleSortFlag(myArray, N); 
+    //printArray(myArray, N); 
 
     scrambleArray(myArray, N); 
-
-    Mergesort(myArray, 0, N); 
+    printArray(myArray, N); 
+    cout << endl<<"----- Sorting Algorithm: Mergesort ------ "<<endl; 
+    Mergesort(myArray, 0, N-1); 
     printArray(myArray, N); 
 
 
