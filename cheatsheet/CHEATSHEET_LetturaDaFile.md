@@ -1,14 +1,14 @@
 # **Lettura da File**
 
 Libreria per leggere da file: ```#include <fstream>```  
-Libreria stringstream per la divisione dell'input: ```#include <sstream>```
+Libreria stringstream per la divisione dell'input: ```#include <sstream>```  
 Libreria per le stringhe che è sempre utile: ```#include <string>```
   
 ***
   
-Ricordarsi di implementare comparazione tramite keys (magari con metodi friends)  
+## **Ricordarsi di implementare un metodo per poter confrontare le keys**  
   
-Tipo così:  
+O la comparazione tramite keys con metodi friends tipo così:  
 
 ```cpp
 friend 
@@ -36,6 +36,8 @@ istream & operator >>(istream & in, ID & ids){
 
 ```
   
+Oppure un confronto tra chiavi private tramite opportuni metodi getters 
+
 ***
 
 ## **Creare classe relativa all'oggetto in questione**
@@ -145,10 +147,11 @@ int loadStrings(const string filename, ID idsArray[]){
 
 ## **Extra**
   
-Potrebbe chiedere di ordinare per chiavi:
-Questo si può fare O tramite confronto grazie ai getters, oppure implementando l'overloading degli operatori di confronto (più macchinoso ma tecnicamente più "elegante").
+Potrebbe chiedere di ordinare per chiavi:  
+Questo si può fare O tramite confronto grazie ai getters, oppure implementando l'overloading degli operatori di confronto (più macchinoso ma tecnicamente più "elegante").  
 Ordinare tramite uno degli algoritmi di ordinamento visti a lezione.  
-    * Bubblesort, Mergesort, InsertionSort, SelectionSort, Quicksort. CountingSort se proprio ti vuoi male (si scherza)
+
+* Bubblesort, Mergesort, InsertionSort, SelectionSort, Quicksort. CountingSort se proprio ti vuoi male (si scherza)
 
 Se chiede di "valutare la complessità temporale stimando il tempo di esecuzione"(sic) inizia a pregare il signore di passare con sufficienza senza quel pezzo
   
