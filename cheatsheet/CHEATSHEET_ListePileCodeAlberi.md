@@ -117,8 +117,26 @@ Necessita di:
     3. Assegno il contenuto al nodo -> ```nuovo_ptr->setData(KEY);```
     4. Faccio puntare il puntatore al successore del nuovo nodo allo stesso successore del nodo che deve essere il predecessore del nuovo nodo -> ```nuovo_ptr->setSucc(ant_ptr->getSucc());```
     5. Faccio in modo che il predecessore del nuovo nodo abbia effettivamente come successore il nuovo nodo -> ```ant_ptr->setSucc(nuovo_ptr);``` 
-* **Cancellazione()**
 * **Ricerca()**
+  1. ```Search(T valore)```  ritorna un puntatore a nodo
+  2. Creo puntatore alla TESTA -> ```Nodo * nuovo_ptr = head;```
+  3. Ciclo while che, finché il nuovo nodo sia diverso da nullptr, passa da sé al suo successivo. Se il VALORE di uno dei nodi per cui passa è uguale al VALORE che sta cercando, ritorna il nuovo nodo e interrompe il ciclo. Altrimenti ritorna nullptr.
+
+```cpp
+    while(nuovo_ptr!=nullptr){
+        if(nuovo_ptr->getData()==valore){
+            return nuovo_ptr;
+        } 
+    nuovo_ptr = nuovo_ptr->getSucc(); 
+    } 
+    return nullptr;
+```
+
+* **Cancellazione()**
+    1. Creare due puntatori a nodo -> ```Nodo * ant=nullptr;``` e --> ```Nodo *pos =p;```
+    2. Ricerca del nodo che contiene il dato da cancellare: farlo puntare dal puntatore a nodo pos -> ```pos = Search(x); ``` e controllare che non sia NULLPTR
+    3. Collegare il puntatore SUCC del nodo puntato da ant al puntatore SUCC del nodo puntato da pos 
+    ![pietà so' stanca metto il resto in screenshot vado a fare database](pic1.jpg)
 
 </details>
 
