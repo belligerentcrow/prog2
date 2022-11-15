@@ -161,7 +161,7 @@ class DNode{
 
 template <typename T>
 class DLinkedList{
-    DNode * nuts;
+    DNode<T> * nuts;
     public: 
         DLinkedList(){
             nuts->previous = nullptr; 
@@ -177,7 +177,7 @@ class DLinkedList{
         } 
 
         void DlistInsertHead(T value){
-            DNode * newNode = new DNode;
+            DNode<T> * newNode = new DNode;
             newNode->data = value; 
             newNode->next = this->nuts; 
             if(this->nuts->previous != nullptr){
@@ -187,9 +187,9 @@ class DLinkedList{
         }
 
         void DListInsertInPlace(T value){
-            DNode * point = research(value); 
+            DNode<T> * point = research(value); 
             
-            DNode * newNode = new DNode; 
+            DNode<T> * newNode = new DNode; 
             newNode->data = value; 
             newNode->next = point->next; 
             newNode->previous = point->next->previous; 
@@ -199,8 +199,8 @@ class DLinkedList{
         }
 
         void DListDelete(T val){
-            DNode * toRemove = research(val);
-            DNode * ant = toRemove->previous; 
+            DNode<T> * toRemove = research(val);
+            DNode<T> * ant = toRemove->previous; 
         }
 
         DNode<T> * research(T value){
