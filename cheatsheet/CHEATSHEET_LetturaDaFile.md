@@ -36,7 +36,7 @@ istream & operator >>(istream & in, ID & ids){
 
 ```
   
-Oppure un confronto tra chiavi private tramite opportuni metodi getters 
+Oppure un confronto tra chiavi private tramite opportuni metodi getters, ce piase comunque  
 
 ***
 
@@ -149,9 +149,32 @@ int loadStrings(const string filename, ID idsArray[]){
   
 Potrebbe chiedere di ordinare per chiavi:  
 Questo si può fare O tramite confronto grazie ai getters, oppure implementando l'overloading degli operatori di confronto (più macchinoso ma tecnicamente più "elegante").  
-Ordinare tramite uno degli algoritmi di ordinamento visti a lezione.  
+Ordinare tramite uno degli algoritmi di ordinamento visti a lezione, gettando in un nuovo file. Ecco appunto mi stavo dimenticando della parte di come gettare in un nuovo file orcocan-  
 
 * Bubblesort, Mergesort, InsertionSort, SelectionSort, Quicksort. CountingSort se proprio ti vuoi male (si scherza)
 
 Se chiede di "valutare la complessità temporale stimando il tempo di esecuzione"(sic) inizia a pregare il signore di passare con sufficienza senza quel pezzo
-  
+
+***
+
+## **Generare un file di output**
+
+Utilizzo il file (aprendolo con il tipo ofstream) come, appunto, uno stream.  
+Ci butto letteralmente dentro le cose con un ```<<``` di prepotenza e poi chiudo.  
+
+Esempio:  
+
+```cpp
+
+    ofstream file3; //stream di tipo ofstream per aprire un file per output
+    
+    file3.open("donecountries.txt", ios_base::app); //apro il file corrispondente 
+    
+    file3 << chosen; //sparo la stringa dentro il file  
+    
+    file3 << "\n";  //sparo una newline dentro il file (IMPORTANTE!!!)
+    
+    file3.close(); //chiudo il file
+    
+    //poi ritorno ciò che devo ritornare etc
+```
